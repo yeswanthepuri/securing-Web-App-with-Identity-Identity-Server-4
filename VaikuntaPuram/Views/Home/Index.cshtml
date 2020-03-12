@@ -1,1 +1,20 @@
-<h1>Index HTML<h1>
+<h1>Index HTML s1
+    <h1>
+@using Microsoft.AspNetCore.Authorization
+
+
+@inject IAuthorizationService autorizationService
+
+
+@if(User.Identity.IsAuthenticated)
+{
+<h1>Is Auth</h1>
+}
+else{
+<h1>Is Not Auth</h1>
+
+}
+@if((await autorizationService.AuthorizeAsync(User, "Claims.DOB")).Succeeded)
+{
+<h2>User has databirth Claims</h2>
+}
